@@ -6,7 +6,8 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            int sum = Functions.Sum(5, 5);
+            // Example of how a unit test could be done in a stupid way
+            int sum = Functions.Sum_Int(5, 5);
             if (sum == 10)
             {
                 Console.WriteLine("Works");
