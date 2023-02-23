@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="CalculatorFunctionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task13Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
