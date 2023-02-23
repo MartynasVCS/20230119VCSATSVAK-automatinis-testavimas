@@ -1,9 +1,9 @@
 ﻿using Calculator;
 using NUnit.Framework;
 
-namespace CalculatorUnitTests
+namespace UnitTests
 {
-    public class FunctionTests
+    public class CalculatorFunctionTests
     {
         [Test]
         public void Sum_5_5_Int()
