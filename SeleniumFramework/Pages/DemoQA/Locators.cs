@@ -18,6 +18,7 @@
         internal static class DynamicProperties
         {
             internal static string buttonFirst = "//*[@id='enableAfter']";
+            internal static string buttonSecond = "//*[@id='colorChange']";
         }
     }
 }

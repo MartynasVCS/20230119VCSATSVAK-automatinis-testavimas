@@ -21,6 +21,36 @@ namespace SeleniumTests.DemoQA
             Assert.IsTrue(DynamicProperties.CheckIfFirstButtonIsEnabled());
         }
 
+        [Test]
+        public void WaitForButtonColorToBeAsExpected()
+        {
+            string expectedButtonTextColor = "rgba(220, 53, 69, 1)";
+
+            DynamicProperties.WaitForSecondButtonTextToBeOfProvidedColor(expectedButtonTextColor);
+
+            Assert.AreEqual(expectedButtonTextColor, DynamicProperties.GetButtonTextColor());
+        }
+
+        [Test]
+        public void WaitForButtonColorToChange()
+        {
+            string defaultButtonTextColor = DynamicProperties.GetButtonTextColor();
+
+            DynamicProperties.WaitForSecondButtonTextColorToChangeFromDefault(defaultButtonTextColor);
+
+            Assert.AreNotEqual(defaultButtonTextColor, DynamicProperties.GetButtonTextColor());
+        }
+
+        [Test]
+        public void WaitForButtonClassToContainValue()
+        {
+            string expectedValue = "text-danger";
+
+            DynamicProperties.WaitForSecondButtonClassAttributeToContainExpectedValue(expectedValue);
+
+            StringAssert.Contains(expectedValue, DynamicProperties.GetSecondButtonClassAttributeValue());
+        }
+
         [TearDown]
         public void Teardown()
         {

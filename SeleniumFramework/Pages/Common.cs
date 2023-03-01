@@ -104,5 +104,26 @@ namespace SeleniumFramework.Pages
             WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
             wait.Until(driver => driver.FindElement(By.XPath(locator)).Enabled);
         }
+
+        internal static void WaitForElementCssAttributeValueToBe(string locator, string cssAttributeName, string expectedCssAttributeValue)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
+            // Used for debugging purposes
+            //System.Threading.Thread.Sleep(6000);
+            //Console.WriteLine(GetElement(locator).GetCssValue(cssAttributeName));
+            wait.Until(driver => driver.FindElement(By.XPath(locator)).GetCssValue(cssAttributeName) == expectedCssAttributeValue);
+        }
+
+        internal static void WaitForElementCssAttributeValueNotToBe(string locator, string cssAttributeName, string cssAttributeValue)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(driver => driver.FindElement(By.XPath(locator)).GetCssValue(cssAttributeName) != cssAttributeValue);
+        }
+
+        internal static void WaitForElementAttributeToContainValue(string locator, string attributeName, string expectedAttributeValue)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(driver => driver.FindElement(By.XPath(locator)).GetAttribute(attributeName).Contains(expectedAttributeValue));
+        }
     }
 }
