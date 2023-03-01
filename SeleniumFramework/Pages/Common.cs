@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -44,6 +46,51 @@ namespace SeleniumFramework.Pages
         internal static string GetElementAttributeValue(string locator, string attributeName)
         {
             return GetElement(locator).GetAttribute(attributeName);
+        }
+
+        internal static void ExecuteJavaScript(string script)
+        {
+            Driver.GetDriver().ExecuteJavaScript(script);
+        }
+
+        internal static void ScrollByPixels(int pixelsRight, int pixelsDown)
+        {
+            ExecuteJavaScript($"window.scrollBy({pixelsRight}, {pixelsDown})");
+        }
+
+        internal static void ScrollUntilElementIsClickable(string locator)
+        {
+            IWebElement element = GetElement(locator);
+
+            bool isClickable = false;
+            int maxTries = 10;
+            int currentTry = 0;
+
+            while (!isClickable)
+            {
+                try
+                {
+                    element.Click();
+                    isClickable = true;
+                }
+                catch(Exception exception)
+                {
+                    if (exception is ElementClickInterceptedException && currentTry < maxTries)
+                    {
+                        ExecuteJavaScript("window.scrollBy(0, 50)");
+                        currentTry++;
+                    }
+                    else
+                    {
+                        throw exception;
+                    }
+                }
+            }
+        }
+
+        internal static string GetElementCssAttributeValue(string locator, string cssAttributeName)
+        {
+            return GetElement(locator).GetCssValue(cssAttributeName);
         }
     }
 }
