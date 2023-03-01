@@ -14,5 +14,10 @@
             internal static string outputFullName = "//*[@id='output']//*[@id='name']";
             internal static string outputPermanentAddress = "//*[@id='output']//*[@id='permanentAddress']";
         }
+
+        internal static class DynamicProperties
+        {
+            internal static string buttonFirst = "//*[@id='enableAfter']";
+        }
     }
 }

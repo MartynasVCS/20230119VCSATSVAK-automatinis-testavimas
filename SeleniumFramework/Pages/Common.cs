@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,6 +92,17 @@ namespace SeleniumFramework.Pages
         internal static string GetElementCssAttributeValue(string locator, string cssAttributeName)
         {
             return GetElement(locator).GetCssValue(cssAttributeName);
+        }
+
+        internal static bool GetElementEnabledStatus(string locator)
+        {
+            return GetElement(locator).Enabled;
+        }
+
+        internal static void WaitForElementToBeEnabled(string locator)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(driver => driver.FindElement(By.XPath(locator)).Enabled);
         }
     }
 }
