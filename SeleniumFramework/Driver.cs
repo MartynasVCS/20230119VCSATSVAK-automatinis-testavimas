@@ -9,7 +9,9 @@ namespace SeleniumFramework
 
         public static void SetupDriver()
         {
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--ignore-certificate-errors");
+            driver = new ChromeDriver(options);
         }
 
         internal static IWebDriver GetDriver()
