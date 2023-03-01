@@ -51,6 +51,14 @@ namespace SeleniumTests.DemoQA
             StringAssert.Contains(expectedValue, DynamicProperties.GetSecondButtonClassAttributeValue());
         }
 
+        [Test]
+        public void WaitForButtonToBecomeVisible()
+        {
+            DynamicProperties.WaitForThirdButtonToBeVisible();
+
+            Assert.IsTrue(DynamicProperties.CheckIfThirdButtonIsVisible());
+        }
+
         [TearDown]
         public void Teardown()
         {

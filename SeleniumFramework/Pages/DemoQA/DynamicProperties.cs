@@ -1,10 +1,17 @@
-﻿namespace SeleniumFramework.Pages.DemoQA
+﻿using System;
+
+namespace SeleniumFramework.Pages.DemoQA
 {
     public class DynamicProperties
     {
         public static bool CheckIfFirstButtonIsEnabled()
         {
             return Common.GetElementEnabledStatus(Locators.DynamicProperties.buttonFirst); 
+        }
+
+        public static bool CheckIfThirdButtonIsVisible()
+        {
+            return Common.GetElementDisplayedStatus(Locators.DynamicProperties.buttonThird);
         }
 
         public static void ClickFirstButton()
@@ -40,6 +47,11 @@
         public static void WaitForSecondButtonTextToBeOfProvidedColor(string expectedColor)
         {
             Common.WaitForElementCssAttributeValueToBe(Locators.DynamicProperties.buttonSecond, "color", expectedColor);
+        }
+
+        public static void WaitForThirdButtonToBeVisible()
+        {
+            Common.WaitForElementToBeVisible(Locators.DynamicProperties.buttonThird);
         }
     }
 }
