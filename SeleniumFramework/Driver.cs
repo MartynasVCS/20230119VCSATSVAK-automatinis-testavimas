@@ -14,6 +14,14 @@ namespace SeleniumFramework
             driver = new ChromeDriver(options);
         }
 
+        public static void SetupDriver(string userDataDir, string profileDir)
+        {
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument($"--user-data-dir={userDataDir}");
+            options.AddArgument($"--profile-directory={profileDir}");
+            driver = new ChromeDriver(options);
+        }
+
         internal static IWebDriver GetDriver()
         {
             return driver;
