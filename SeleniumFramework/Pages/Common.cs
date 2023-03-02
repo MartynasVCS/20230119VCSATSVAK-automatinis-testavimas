@@ -165,5 +165,45 @@ namespace SeleniumFramework.Pages
             SelectElement selectElement = GetSelectElement(locator);
             return selectElement.SelectedOption.Text;
         }
+
+        internal static void AcceptAlert()
+        {
+            Driver.GetDriver().SwitchTo().Alert().Accept();
+        }
+
+        internal static string GetAlertText()
+        {
+            return Driver.GetDriver().SwitchTo().Alert().Text;
+        }
+
+        internal static void DismissAlert()
+        {
+            Driver.GetDriver().SwitchTo().Alert().Dismiss();
+        }
+
+        internal static bool CheckIfAlertIsActive()
+        {
+            try
+            {
+                Driver.GetDriver().SwitchTo().Alert();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                if (ex is NoAlertPresentException)
+                {
+                    return false;
+                }
+                else
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        internal static void SendKeysToAlert(string keys)
+        {
+            Driver.GetDriver().SwitchTo().Alert().SendKeys(keys);
+        }
     }
 }
