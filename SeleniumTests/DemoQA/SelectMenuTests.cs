@@ -23,6 +23,16 @@ namespace SeleniumTests.DemoQA
             Assert.AreEqual(expectedSelectedValue, SelectMenu.GetSelectedValueInOldStyleMenu());
         }
 
+        [Test]
+        public void SelectTitleFromSelectOneMenu()
+        {
+            string expectedTitle = "Mr.";
+
+            SelectMenu.SelectValueInSelectOneMenu(expectedTitle);
+
+            StringAssert.Contains(expectedTitle, SelectMenu.GetSelectedValueInSelectOneMenu());
+        }
+
         [TearDown]
         public void Teardown()
         {
