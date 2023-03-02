@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="DemoQA\ButtonsTests.cs" />
     <Compile Include="DemoQA\DymanicPropertiesTests.cs" />
+    <Compile Include="DemoQA\SelectMenuTests.cs" />
     <Compile Include="DemoQA\TextBoxTests.cs" />
     <Compile Include="SeleniumEasy\BasicCheckboxDemoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

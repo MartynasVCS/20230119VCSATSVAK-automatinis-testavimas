@@ -27,5 +27,10 @@
             internal static string buttonDoubleClick = "//*[@id=\"doubleClickBtn\"]";
             internal static string outputDoubleClick = "//*[@id=\"doubleClickMessage\"]";
         }
+
+        internal static class SelectMenu
+        {
+            internal static string selectOldStyle = "//*[@id='oldSelectMenu']";
+        }
     }
 }
