@@ -1,15 +1,15 @@
 ﻿using NUnit.Framework;
 using SeleniumFramework;
 using SeleniumFramework.Pages.DemoQA;
+using SeleniumTests.BaseTests;
 
 namespace SeleniumTests.DemoQA
 {
-    internal class DymanicPropertiesTests
+    internal class DymanicPropertiesTests : BaseTest
     {
         [SetUp]
-        public void Setup()
+        public void Open()
         {
-            Driver.SetupDriver();
             Driver.OpenUrl("https://demoqa.com/dynamic-properties");
         }
 
@@ -57,12 +57,6 @@ namespace SeleniumTests.DemoQA
             DynamicProperties.WaitForThirdButtonToBeVisible();
 
             Assert.IsTrue(DynamicProperties.CheckIfThirdButtonIsVisible());
-        }
-
-        [TearDown]
-        public void Teardown()
-        {
-            Driver.QuitDriver();
         }
     }
 }

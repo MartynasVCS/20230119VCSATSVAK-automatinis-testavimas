@@ -1,15 +1,15 @@
 ﻿using NUnit.Framework;
 using SeleniumFramework;
 using SeleniumFramework.Pages.DemoQA;
+using SeleniumTests.BaseTests;
 
 namespace SeleniumTests.DemoQA
 {
-    internal class ButtonsTests
+    internal class ButtonsTests : BaseTest
     {
         [SetUp]
-        public void Setup()
+        public void Open()
         {
-            Driver.SetupDriver();
             Driver.OpenUrl("https://demoqa.com/buttons");
         }
 
@@ -21,12 +21,6 @@ namespace SeleniumTests.DemoQA
             Buttons.DoubleClickButton();
 
             Assert.AreEqual(expectedText, Buttons.GetDoubleClickActionOutput());
-        }
-
-        [TearDown]
-        public void Teardown()
-        {
-            Driver.QuitDriver();
         }
     }
 }

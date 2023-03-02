@@ -7,9 +7,8 @@ namespace SeleniumTests.DemoQA
     internal class SelectMenuTests
     {
         [SetUp]
-        public void Setup()
+        public void Open()
         {
-            Driver.SetupDriver();
             Driver.OpenUrl("https://demoqa.com/select-menu");
         }
 
@@ -31,12 +30,6 @@ namespace SeleniumTests.DemoQA
             SelectMenu.SelectValueInSelectOneMenu(expectedTitle);
 
             StringAssert.Contains(expectedTitle, SelectMenu.GetSelectedValueInSelectOneMenu());
-        }
-
-        [TearDown]
-        public void Teardown()
-        {
-            Driver.QuitDriver();
         }
     }
 }

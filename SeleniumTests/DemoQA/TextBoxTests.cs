@@ -7,9 +7,8 @@ namespace SeleniumTests.DemoQA
     internal class TextBoxTests
     {
         [SetUp]
-        public void Setup()
+        public void Open()
         {
-            Driver.SetupDriver();
             Driver.OpenUrl("https://demoqa.com/text-box");
         }
 
@@ -49,12 +48,6 @@ namespace SeleniumTests.DemoQA
 
             // Patikriname elemento border'io visą stilių
             Assert.AreEqual("0.519481px solid rgb(255, 0, 0)", TextBox.GetEmailInputBorderStyle());
-        }
-
-        [TearDown]
-        public void Teardown()
-        {
-            Driver.QuitDriver();
         }
     }
 }
