@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -136,6 +137,15 @@ namespace SeleniumFramework.Pages
         internal static bool GetElementDisplayedStatus(string locator)
         {
             return GetElement(locator).Displayed;
+        }
+
+        internal static void DoubleClickElement(string locator)
+        {
+            Actions actions = new Actions(Driver.GetDriver());
+            IWebElement element = GetElement(locator);
+
+            actions.DoubleClick(element);
+            actions.Perform();
         }
     }
 }
