@@ -13,7 +13,15 @@ namespace SeleniumFramework
         {
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("--ignore-certificate-errors");
+            //options.AddArgument("--window-size=1920,1080"); // Sets the initial window size. Provided as string in the format "800,600".
+            //options.AddArgument("--headless"); // Run in headless mode, i.e., without a UI or display server dependencies.
+            //options.AddArgument("--start-maximized"); // Starts the browser maximized, regardless of any previous settings.
+            //options.AddArgument("--disable-notifications"); // Disables the Web Notification and the Push APIs.
+
             driver = new ChromeDriver(options);
+
+            // Another way to maximize window. Does not work with headless mode
+            //driver.Manage().Window.Maximize();
         }
 
         public static void SetupDriver(string userDataDir, string profileDir)
