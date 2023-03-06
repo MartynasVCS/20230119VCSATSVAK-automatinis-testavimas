@@ -205,5 +205,11 @@ namespace SeleniumFramework.Pages
         {
             Driver.GetDriver().SwitchTo().Alert().SendKeys(keys);
         }
+
+        internal static void WaitForElementToNotContainText(string locator, string text)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(driver => !driver.FindElement(By.XPath(locator)).Text.Contains(text));
+        }
     }
 }
