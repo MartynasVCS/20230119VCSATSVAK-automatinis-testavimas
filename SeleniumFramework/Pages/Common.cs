@@ -211,5 +211,23 @@ namespace SeleniumFramework.Pages
             WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
             wait.Until(driver => !driver.FindElement(By.XPath(locator)).Text.Contains(text));
         }
+
+        internal static void LeftClickElement(string locator)
+        {
+            Actions actions = new Actions(Driver.GetDriver());
+            IWebElement element = GetElement(locator);
+
+            actions.Click(element);
+            actions.Perform();
+        }
+
+        internal static void RightClickElement(string locator)
+        {
+            Actions actions = new Actions(Driver.GetDriver());
+            IWebElement element = GetElement(locator);
+
+            actions.ContextClick(element);
+            actions.Perform();
+        }
     }
 }

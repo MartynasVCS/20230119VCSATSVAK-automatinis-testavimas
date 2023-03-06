@@ -14,13 +14,33 @@ namespace SeleniumTests.DemoQA
         }
 
         [Test]
-        public void Demo()
+        public void DoubleClick()
         {
             string expectedText = "You have done a double click";
 
             Buttons.DoubleClickButton();
 
             Assert.AreEqual(expectedText, Buttons.GetDoubleClickActionOutput());
+        }
+
+        [Test]
+        public void RightClick()
+        {
+            string expectedText = "You have done a right click";
+
+            Buttons.RightClickButton();
+
+            Assert.AreEqual(expectedText, Buttons.GetRightClickActionOutput());
+        }
+
+        [Test]
+        public void LeftClickUsingActions()
+        {
+            string expectedText = "You have done a dynamic click";
+
+            Buttons.LeftClickButton();
+
+            Assert.AreEqual(expectedText, Buttons.GetLeftClickActionOutput());
         }
     }
 }

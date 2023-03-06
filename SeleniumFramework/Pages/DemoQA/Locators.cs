@@ -24,8 +24,12 @@
 
         internal static class Buttons
         {
-            internal static string buttonDoubleClick = "//*[@id=\"doubleClickBtn\"]";
-            internal static string outputDoubleClick = "//*[@id=\"doubleClickMessage\"]";
+            internal static string buttonDoubleClick = "//*[@id='doubleClickBtn']";
+            internal static string outputDoubleClick = "//*[@id='doubleClickMessage']";
+            internal static string outputLeftClick = "//*[@id='dynamicClickMessage']";
+            internal static string outputRightClick = "//*[@id='rightClickMessage']";
+            internal static string buttonLeftClick = "//*[@id='rightClickBtn']/../following-sibling::div/button";
+            internal static string buttonRightClick = "//*[@id='rightClickBtn']";
         }
 
         internal static class SelectMenu
