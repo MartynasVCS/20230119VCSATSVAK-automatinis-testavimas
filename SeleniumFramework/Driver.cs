@@ -39,7 +39,7 @@ namespace SeleniumFramework
             driver.Quit();
         }
 
-        public static void TakeScreenshot(string methodName)
+        public static string TakeScreenshot(string methodName)
         {
             string screenshotsDirectoryPath = $"{AppDomain.CurrentDomain.BaseDirectory}screenshots";
             string screenshotName = $"{methodName}-{DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")}.png";
@@ -48,6 +48,7 @@ namespace SeleniumFramework
             Directory.CreateDirectory(screenshotsDirectoryPath);
             Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
             screenshot.SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Png);
+            return screenshotFilePath;
         }
     }
 }
