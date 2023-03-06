@@ -14,6 +14,7 @@ namespace SeleniumTests.BaseTests
         [TearDown]
         public void Teardown()
         {
+            Driver.TakeScreenshot();
             Driver.QuitDriver();
         }
     }

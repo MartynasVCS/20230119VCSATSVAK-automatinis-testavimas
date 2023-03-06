@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
+using System;
+using System.IO;
 
 namespace SeleniumFramework
 {
@@ -35,6 +37,17 @@ namespace SeleniumFramework
         public static void QuitDriver()
         {
             driver.Quit();
+        }
+
+        public static void TakeScreenshot()
+        {
+            string screenshotsDirectoryPath = $"{AppDomain.CurrentDomain.BaseDirectory}screenshots";
+            string screenshotName = $"screenshot-{DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")}.png";
+            string screenshotFilePath = $"{screenshotsDirectoryPath}\\{screenshotName}";
+
+            Directory.CreateDirectory(screenshotsDirectoryPath);
+            Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+            screenshot.SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Png);
         }
     }
 }
