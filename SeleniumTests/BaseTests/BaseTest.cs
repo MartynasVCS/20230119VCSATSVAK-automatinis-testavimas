@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using SeleniumFramework;
 
 namespace SeleniumTests.BaseTests
@@ -14,7 +15,11 @@ namespace SeleniumTests.BaseTests
         [TearDown]
         public void Teardown()
         {
-            Driver.TakeScreenshot();
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                Driver.TakeScreenshot();
+            }
+
             Driver.QuitDriver();
         }
     }
