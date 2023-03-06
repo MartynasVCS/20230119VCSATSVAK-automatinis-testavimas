@@ -3,8 +3,10 @@ using SeleniumFramework;
 using SeleniumFramework.Pages.DemoQA;
 using SeleniumTests.BaseTests;
 
+[assembly: LevelOfParallelism(2)]
 namespace SeleniumTests.DemoQA
 {
+    [Parallelizable(scope: ParallelScope.Children)]
     internal class DymanicPropertiesTests : BaseTest
     {
         [SetUp]

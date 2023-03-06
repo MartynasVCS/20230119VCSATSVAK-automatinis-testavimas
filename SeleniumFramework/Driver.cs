@@ -2,12 +2,13 @@
 using OpenQA.Selenium;
 using System;
 using System.IO;
+using System.Threading;
 
 namespace SeleniumFramework
 {
     public class Driver
     {
-        private static IWebDriver driver;
+        private static ThreadLocal<IWebDriver> driver= new ThreadLocal<IWebDriver>();
 
         public static void SetupDriver()
         {
@@ -18,7 +19,7 @@ namespace SeleniumFramework
             //options.AddArgument("--start-maximized"); // Starts the browser maximized, regardless of any previous settings.
             //options.AddArgument("--disable-notifications"); // Disables the Web Notification and the Push APIs.
 
-            driver = new ChromeDriver(options);
+            driver.Value = new ChromeDriver(options);
 
             // Another way to maximize window. Does not work with headless mode
             //driver.Manage().Window.Maximize();
@@ -29,22 +30,22 @@ namespace SeleniumFramework
             ChromeOptions options = new ChromeOptions();
             options.AddArgument($"--user-data-dir={userDataDir}");
             options.AddArgument($"--profile-directory={profileDir}");
-            driver = new ChromeDriver(options);
+            driver.Value = new ChromeDriver(options);
         }
 
         internal static IWebDriver GetDriver()
         {
-            return driver;
+            return driver.Value;
         }
 
         public static void OpenUrl(string url)
         {
-            driver.Url = url;
+            driver.Value.Url = url;
         }
 
         public static void QuitDriver()
         {
-            driver.Quit();
+            driver.Value.Quit();
         }
 
         public static string TakeScreenshot(string methodName)
@@ -54,7 +55,7 @@ namespace SeleniumFramework
             string screenshotFilePath = $"{screenshotsDirectoryPath}\\{screenshotName}";
 
             Directory.CreateDirectory(screenshotsDirectoryPath);
-            Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+            Screenshot screenshot = ((ITakesScreenshot)driver.Value).GetScreenshot();
             screenshot.SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Png);
             return screenshotFilePath;
         }
