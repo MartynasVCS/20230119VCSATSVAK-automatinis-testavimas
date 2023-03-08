@@ -229,5 +229,16 @@ namespace SeleniumFramework.Pages
             actions.ContextClick(element);
             actions.Perform();
         }
+
+        internal static void SwitchToIframeByLocator(string locator)
+        {
+            IWebElement element = GetElement(locator);
+            Driver.GetDriver().SwitchTo().Frame(element);
+        }
+
+        internal static void SwitchToDefaultContent()
+        {
+            Driver.GetDriver().SwitchTo().DefaultContent();
+        }
     }
 }
