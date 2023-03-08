@@ -14,7 +14,7 @@ namespace SeleniumTests.DemoQA
         }
 
         [Test]
-        public void Temp()
+        public void SwitchToFrameAndBackToMainPage()
         {
             string expectedMainPageHeadingText = "Frames";
             string expectedFrameHeadingText = "This is a sample page";

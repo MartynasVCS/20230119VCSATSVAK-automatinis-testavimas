@@ -240,5 +240,33 @@ namespace SeleniumFramework.Pages
         {
             Driver.GetDriver().SwitchTo().DefaultContent();
         }
+
+        internal static string GetCurrentWindowHandle()
+        {
+            return Driver.GetDriver().CurrentWindowHandle;
+        }
+
+        internal static List<string> GetWindowHandles()
+        {
+            return Driver.GetDriver().WindowHandles.ToList();
+        }
+
+        internal static void SwitchToWindowByHandle(string handle)
+        {
+            Driver.GetDriver().SwitchTo().Window(handle);
+        }
+
+        internal static void SwitchToNewWindowFromCurrentWindowHandle(string currentWindowHandle)
+        {
+            List<string> handles = GetWindowHandles();
+
+            foreach (string handle in handles)
+            {
+                if (handle != currentWindowHandle)
+                {
+                    SwitchToWindowByHandle(handle);
+                }
+            }
+        }
     }
 }
